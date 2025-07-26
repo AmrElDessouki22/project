@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { useNotes } from '@/contexts/NotesContext'
-import Input from '@/components/ui/Input'
 import Button from '@/components/ui/Button'
 
 export default function NoteForm() {
@@ -12,31 +11,33 @@ export default function NoteForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (title && content) {
-      addNote({
-        title,
-        content,
-      })
-      setTitle('')
-      setContent('')
-    }
+    addNote({
+      title,
+      content,
+    })
+    setTitle('')
+    setContent('')
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mb-6">
-      <Input
+    <form onSubmit={handleSubmit} className="mb-8">
+      <input 
+        type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Note Title"
-        className="mb-2 w-full"
+        className="w-full mb-4 p-2 border rounded"
+        required
       />
-      <Input
+      <textarea
         value={content}
         onChange={(e) => setContent(e.target.value)}
         placeholder="Note Content"
-        className="mb-2 w-full"
+        className="w-full mb-4 p-2 border rounded"
+        required
+        rows={4}
       />
-      <Button type="submit">Add Note</Button>
+      <Button type="submit" variant="primary">Add Note</Button>
     </form>
   )
 }
