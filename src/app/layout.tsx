@@ -3,14 +3,10 @@ import { NotesProvider } from '@/contexts/NotesContext'
 
 export const metadata = {
   title: 'Note App',
-  description: 'A simple note-taking application',
+  description: 'A simple note-taking app',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
