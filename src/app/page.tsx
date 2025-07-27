@@ -1,18 +1,14 @@
-import Header from '@/components/ui/Header'
-import Sidebar from '@/components/layout/Sidebar'
-import NoteList from '@/components/features/NoteList'
+import { NoteList } from '@/components/features/NoteList';
+import { AddNote } from '@/components/features/AddNote';
 
-export default function HomePage() {
+const HomePage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      <div className="flex">
-        <Sidebar />
-        <main className="flex-1 p-6">
-          <h1 className="text-3xl font-bold">My Notes</h1>
-          <NoteList />
-        </main>
-      </div>
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">My Notes</h1>
+      <AddNote />
+      <NoteList />
     </div>
-  )
-}
+  );
+};
+
+export default HomePage;
