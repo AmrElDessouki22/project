@@ -1,6 +1,6 @@
 import { NextConfig } from 'next';
 
-const nextConfig: NextConfig = {
+const config: NextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   experimental: {
@@ -8,4 +8,4 @@ const nextConfig: NextConfig = {
   }
 };
 
-export default nextConfig;
+export default config;
