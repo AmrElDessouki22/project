@@ -1,17 +1,23 @@
+'use client';
+
 interface InputProps {
-  value: string
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  placeholder?: string
-  className?: string
+  type: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  className?: string;
 }
 
-export default function Input({ value, onChange, placeholder, className }: InputProps) {
+const Input = ({ type, value, onChange, placeholder = '', className = '' }: InputProps) => {
   return (
     <input
+      type={type}
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      className={`border rounded p-2 ${className}`}
+      className={`border rounded px-3 py-2 ${className}`}
     />
-  )
-}
+  );
+};
+
+export default Input;
