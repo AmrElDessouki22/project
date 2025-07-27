@@ -1,44 +1,30 @@
-# Note App
+# Notes App
 
-This is a comprehensive, production-ready note-taking application built with Next.js 15+ and TypeScript.
+This is a comprehensive notes application built with Next.js 15+, TypeScript, and Tailwind CSS. It features an intuitive interface for managing personal notes.
+
+## Features
+- Create, edit, and delete notes
+- Responsive design for mobile and desktop
+- Light and dark mode support
+- Search functionality
 
 ## Getting Started
 
-To run the development server:
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Run the development server: `npm run dev`
 
-```bash
-npm run dev
-```
+## Build for Production
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Features
-
-- Create, edit, and delete notes
-- Responsive design
-- Light/Dark mode support
-
-## Technologies Used
-
-- Next.js 15+
-- React 18
-- TypeScript
-- Tailwind CSS
-
-## Environment Variables
-
-Create a `.env.local` file in the root directory and add the following:
+To create an optimized production build:
 
 ```
-DATABASE_URL=your-database-url
-NEXT_PUBLIC_API_URL=your-api-url
-```
-
-## Deployment
-
-To deploy the app, run:
-
-```bash
 npm run build
 npm run start
 ```
+
+## Environment Variables
+
+You can configure the app using the following environment variables:
+
+- `NEXT_PUBLIC_API_URL`: The base URL for the API
