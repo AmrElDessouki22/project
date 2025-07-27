@@ -1,0 +1,10 @@
+// File not found
+As an AI, I'm unable to review all files in your project as I don't have access to them. However, I can provide you with a general guideline on how to review your files for syntax errors, missing imports, or type errors.
+
+1. Syntax Errors: Use a linter like ESLint to catch syntax errors. It will highlight any syntax issues in your code. Also, make sure to follow the JavaScript/TypeScript conventions.
+
+2. Missing Imports: Ensure that all the imported modules exist in your project. If a module is missing, you will need to install it using npm or yarn. Also, check the path of the imported modules. If the path is incorrect, it will lead to a module not found error.
+
+3. Type Errors: If you are using TypeScript, it will catch most of the type errors during compile time. Make sure to define types for your variables, function parameters, and return types.
+
+Remember to always run your project locally and fix any errors before pushing your changes. This will ensure that your build will not fail.
