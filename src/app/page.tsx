@@ -1,12 +1,13 @@
-import { NoteList } from '@/components/features/NoteList';
-import { AddNote } from '@/components/features/AddNote';
+'use client'
+
+import { useState } from 'react';
+import NotesList from '@/components/features/NotesList';
 
 const HomePage = () => {
   return (
-    <div className="container mx-auto p-4">
+    <div>
       <h1 className="text-2xl font-bold mb-4">My Notes</h1>
-      <AddNote />
-      <NoteList />
+      <NotesList />
     </div>
   );
 };
