@@ -1,19 +1,30 @@
-import './globals.css'
-import { NotesProvider } from '@/contexts/NotesContext'
+import { ReactNode } from 'react';
+import '@/app/globals.css';
+import { Header } from '@/components/ui/Header';
+import { Footer } from '@/components/ui/Footer';
+import { NotesProvider } from '@/contexts/NotesContext';
+
+interface LayoutProps {
+  children: ReactNode;
+}
 
 export const metadata = {
   title: 'Note App',
-  description: 'A simple note-taking app',
-}
+  description: 'A comprehensive note-taking application.',
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const RootLayout = ({ children }: LayoutProps) => {
   return (
     <html lang="en">
       <body>
         <NotesProvider>
-          {children}
+          <Header />
+          <main>{children}</main>
+          <Footer />
         </NotesProvider>
       </body>
     </html>
-  )
-}
+  );
+};
+
+export default RootLayout;
