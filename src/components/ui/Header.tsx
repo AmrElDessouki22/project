@@ -1,13 +1,11 @@
-import Link from 'next/link'
-
-export default function Header() {
+const Header = () => {
   return (
-    <header className="bg-white shadow">
-      <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <Link href="/">
-          <a className="text-3xl font-bold text-blue-600">My Note App</a>
-        </Link>
+    <header className="bg-blue-600 text-white py-4">
+      <div className="container mx-auto">
+        <h1 className="text-2xl font-bold">Notes App</h1>
       </div>
     </header>
-  )
-}
+  );
+};
+
+export default Header;
