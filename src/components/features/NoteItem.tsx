@@ -1,23 +1,18 @@
-import { Note } from '@/types'
-import { useNotes } from '@/contexts/NotesContext'
+'use client';
+
+import { Note } from '@/types';
 
 interface NoteItemProps {
-  note: Note
+  note: Note;
 }
 
-export default function NoteItem({ note }: NoteItemProps) {
-  const { deleteNote } = useNotes()
-
+const NoteItem = ({ note }: NoteItemProps) => {
   return (
-    <li className="mb-4 p-4 border rounded shadow">
-      <h3 className="text-xl font-bold">{note.title}</h3>
+    <li className="border-b py-2">
+      <h3 className="text-lg font-semibold">{note.title}</h3>
       <p>{note.content}</p>
-      <button 
-        onClick={() => deleteNote(note.id)}
-        className="text-red-500 mt-2"
-      >
-        Delete
-      </button>
     </li>
-  )
-}
+  );
+};
+
+export default NoteItem;
