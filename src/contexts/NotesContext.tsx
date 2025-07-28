@@ -1,26 +1,32 @@
 'use client';
 
-import { createContext, ReactNode, useContext, useState } from 'react';
-import { Note } from '@/types';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
+
+interface Note {
+  id: string;
+  text: string;
+}
 
 interface NotesContextType {
   notes: Note[];
-  addNote: (note: Note) => void;
+  addNote: (text: string) => void;
   deleteNote: (id: string) => void;
 }
 
 const NotesContext = createContext<NotesContextType | undefined>(undefined);
 
 export const NotesProvider = ({ children }: { children: ReactNode }) => {
-  const [notes, setNotes] = useLocalStorage<Note[]>('notes', []);
+  const [notes, setNotes] = useState<Note[]>([]);
 
-  const addNote = (note: Note) => {
-    setNotes([...notes, note]);
+  const addNote = (text: string) => {
+    setNotes((prevNotes) => [
+      ...prevNotes,
+      { id: Date.now().toString(), text },
+    ]);
   };
 
   const deleteNote = (id: string) => {
-    setNotes(notes.filter(note => note.id !== id));
+    setNotes((prevNotes) => prevNotes.filter(note => note.id !== id));
   };
 
   return (
