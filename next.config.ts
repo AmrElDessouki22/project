@@ -1,11 +1,10 @@
 import { NextConfig } from 'next';
 
-const config: NextConfig = {
+const nextConfig: NextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   experimental: {
-    appDir: true
-  }
+    appDir: true,
+  },
 };
 
-export default config;
+export default nextConfig;
