@@ -1,15 +1,12 @@
-'use client'
+import { NotesList } from '@/components/features/NotesList';
+import AddNote from '@/components/features/AddNote';
 
-import { useState } from 'react';
-import NotesList from '@/components/features/NotesList';
-
-const HomePage = () => {
+export default function HomePage() {
   return (
-    <div>
+    <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">My Notes</h1>
+      <AddNote />
       <NotesList />
     </div>
   );
-};
-
-export default HomePage;
+}
