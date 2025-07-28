@@ -3,9 +3,9 @@ import { Config } from 'tailwindcss';
 const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {}
+    extend: {},
   },
-  plugins: []
+  plugins: [],
 };
 
 export default config;
