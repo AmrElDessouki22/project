@@ -1,24 +1,16 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
-}
-
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+export default function Modal({ isOpen, onClose, children }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white p-4 rounded">
+        <button onClick={onClose} className="absolute top-2 right-2">Close</button>
         {children}
-        <button onClick={onClose} className="mt-4">Close</button>
       </div>
     </div>
   );
-};
-
-export default Modal;
+}
