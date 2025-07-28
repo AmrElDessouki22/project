@@ -1,18 +1,14 @@
-'use client';
+"use client";
 
-import { useNotes } from '@/contexts/NotesContext';
+import { useNotesContext } from '../../contexts/NotesContext';
 
-interface NoteItemProps {
-  note: { id: string; text: string };
-}
-
-export default function NoteItem({ note }: NoteItemProps) {
-  const { deleteNote } = useNotes();
+export default function NoteItem({ id, content }) {
+  const { deleteNote } = useNotesContext();
 
   return (
-    <div className="flex justify-between items-center p-2 bg-white rounded mb-2 shadow">
-      <span>{note.text}</span>
-      <button onClick={() => deleteNote(note.id)} className="text-red-500">Delete</button>
+    <div className="flex justify-between items-center p-2 border-b">
+      <span className="text-black">{content}</span> {/* Ensure note text is black */}
+      <button onClick={() => deleteNote(id)} className="text-red-500">Delete</button>
     </div>
   );
 }
