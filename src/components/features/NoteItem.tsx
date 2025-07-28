@@ -1,18 +1,18 @@
 'use client';
 
-import { Note } from '@/types';
+import { useNotes } from '@/contexts/NotesContext';
 
 interface NoteItemProps {
-  note: Note;
+  note: { id: string; text: string };
 }
 
-const NoteItem = ({ note }: NoteItemProps) => {
-  return (
-    <li className="border-b py-2">
-      <h3 className="text-lg font-semibold">{note.title}</h3>
-      <p>{note.content}</p>
-    </li>
-  );
-};
+export default function NoteItem({ note }: NoteItemProps) {
+  const { deleteNote } = useNotes();
 
-export default NoteItem;
+  return (
+    <div className="flex justify-between items-center p-2 bg-white rounded mb-2 shadow">
+      <span>{note.text}</span>
+      <button onClick={() => deleteNote(note.id)} className="text-red-500">Delete</button>
+    </div>
+  );
+}
