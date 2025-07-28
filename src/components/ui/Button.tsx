@@ -1,17 +1,14 @@
 'use client';
 
-interface ButtonProps {
-  onClick: () => void;
+import React from 'react';
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  className?: string;
 }
 
-const Button = ({ onClick, children, className = '' }: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
   return (
-    <button
-      onClick={onClick}
-      className={`px-4 py-2 bg-blue-500 text-white rounded ${className}`}
-    >
+    <button {...props} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
       {children}
     </button>
   );
