@@ -1,10 +1,10 @@
-import { NextConfig } from 'next';
-
-const nextConfig: NextConfig = {
+// Next.js configuration file
+const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    appDir: true,
+  swcMinify: true,
+  images: {
+    domains: ['example.com'],
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
