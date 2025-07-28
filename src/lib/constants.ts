@@ -1,1 +1,1 @@
-export const APP_NAME = 'Note App';
+export const APP_NAME = 'Next.js Notes App';
