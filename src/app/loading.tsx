@@ -1,9 +1,3 @@
-const GlobalLoading = () => {
-  return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="loader" />
-    </div>
-  );
-};
-
-export default GlobalLoading;
+export default function Loading() {
+  return <div>Loading...</div>;
+}
