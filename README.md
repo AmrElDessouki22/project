@@ -1,31 +1,23 @@
-# Note App
+# Next.js Notes App
 
-This is a simple note-taking application built with Next.js 15+ using the App Router feature. It supports creating, editing, and deleting notes with a modern UI.
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This is a simple notes application built with Next.js, demonstrating the use of the App Router, context for state management, and custom hooks.
 
 ## Features
 
-- Create, edit, and delete notes
+- Add, edit, and delete notes
+- Persist notes in local storage
 - Responsive design
-- Light and dark mode support
-- Fast performance with Next.js static generation
 
-## Technologies Used
+## Development
 
-- Next.js 15+
-- React 18
-- TypeScript
-- Tailwind CSS
+1. Clone the repository
+2. Run `npm install` to install dependencies
+3. Use `npm run dev` to start the development server
 
-## Project Structure
+## Build
 
-The project uses the new App Router structure from Next.js 15+ located in the `src/app/` directory.
+Use `npm run build` to create a production build.
+
+## Deployment
+
+Deploy the application using Vercel or any Next.js compatible hosting service.
