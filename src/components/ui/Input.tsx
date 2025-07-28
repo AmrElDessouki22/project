@@ -1,19 +1,14 @@
-'use client';
+"use client";
 
-import React from 'react';
-
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
-
-const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+export default function Input({ value, onChange, placeholder, className }) {
   return (
     <input
-      ref={ref}
-      {...props}
-      className="border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300"
+      type="text"
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+      className={`border p-2 rounded ${className}`}
+      style={{ color: '#333333', backgroundColor: '#f5f5f5' }} // Dark grey text on light grey background to avoid conflict with white background
     />
   );
-});
-
-Input.displayName = 'Input';
-
-export default Input;
+}
