@@ -1,31 +1,31 @@
-'use client';
+"use client";
 
 import { useState } from 'react';
-import { useNotes } from '@/contexts/NotesContext';
-import Input from '@/components/ui/Input';
-import Button from '@/components/ui/Button';
+import { useNotesContext } from '../../contexts/NotesContext';
+import Input from '../ui/Input';
+import Button from '../ui/Button';
 
 export default function AddNote() {
-  const [text, setText] = useState('');
-  const { addNote } = useNotes();
+  const [note, setNote] = useState('');
+  const { addNote } = useNotesContext();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (text.trim()) {
-      addNote(text);
-      setText('');
+  const handleAddNote = () => {
+    if (note.trim()) {
+      addNote(note);
+      setNote('');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-4">
+    <div className="mb-4">
       <Input
-        type="text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Add a new note"
+        value={note}
+        onChange={(e) => setNote(e.target.value)}
+        placeholder="Add a new note..."
+        className="w-full mb-2 text-black"
+        style={{color: 'black'}}
       />
-      <Button type="submit">Add Note</Button>
-    </form>
+      <Button onClick={handleAddNote} className="w-full text-black">Add Note</Button>
+    </div>
   );
 }
