@@ -1,11 +1,11 @@
 {
-  "name": "notes-app",
+  "name": "note-app",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "15.2.0",
