@@ -1,23 +1,19 @@
 'use client';
 
-interface InputProps {
-  type: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder?: string;
-  className?: string;
-}
+import React from 'react';
 
-const Input = ({ type, value, onChange, placeholder = '', className = '' }: InputProps) => {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   return (
     <input
-      type={type}
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-      className={`border rounded px-3 py-2 ${className}`}
+      ref={ref}
+      {...props}
+      className="border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300"
     />
   );
-};
+});
+
+Input.displayName = 'Input';
 
 export default Input;
