@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useNotes } from '@/contexts/NotesContext';
-import NoteItem from '@/components/features/NoteItem';
+import { useNotesContext } from '../../contexts/NotesContext';
+import NoteItem from './NoteItem';
 
-export function NotesList() {
-  const { notes } = useNotes();
+export default function NotesList() {
+  const { notes } = useNotesContext();
 
   return (
     <div>
-      {notes.map(note => (
-        <NoteItem key={note.id} note={note} />
+      {notes.map((note) => (
+        <NoteItem key={note.id} id={note.id} content={note.content} />
       ))}
     </div>
   );
