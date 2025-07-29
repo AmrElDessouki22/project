@@ -1,19 +1,16 @@
 'use client';
 
-import React from 'react';
 import { Note } from '@/types';
-import Button from '../ui/Button';
-import { NotesContext } from '@/contexts/NotesContext';
 
-const NoteItem: React.FC<{ note: Note }> = ({ note }) => {
-  const { deleteNote } = React.useContext(NotesContext);
+interface NoteItemProps {
+  note: Note;
+}
 
+export default function NoteItem({ note }: NoteItemProps) {
   return (
-    <li className="flex justify-between items-center p-2 border-b">
-      <span>{note.content}</span>
-      <Button onClick={() => deleteNote(note.id)}>Delete</Button>
-    </li>
+    <div className="p-4 mb-2 border rounded">
+      <h2 className="text-lg font-bold">{note.title}</h2>
+      <p>{note.content}</p>
+    </div>
   );
-};
-
-export default NoteItem;
+}
