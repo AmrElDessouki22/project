@@ -1,25 +1,36 @@
-# Note App
+# AI Generated Notes App
 
-This is a comprehensive Note App built with Next.js 15+, TypeScript, and Tailwind CSS. It features a modern UI and responsive design, with support for note creation, editing, and deletion.
-
-## Features
-- Create, edit, and delete notes
-- Responsive design
-- Persistent storage using Local Storage
-- Dark/Light mode support
+This project is a simple note-taking application built with Next.js 15+ using the App Router, React, and TypeScript. It includes features such as creating, editing, and deleting notes, as well as organizing them into categories.
 
 ## Getting Started
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Run the development server: `npm run dev`
 
-## Scripts
-- `dev`: Start the development server
-- `build`: Build the application for production
-- `start`: Start the production server
+First, install the dependencies:
 
-## Environment Variables
-- `NEXT_PUBLIC_API_BASE_URL`: Base URL for the API
+```bash
+npm install
+```
+
+Then, run the development server:
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Features
+- Create, update, and delete notes
+- Organize notes into categories
+- Responsive design
+- Light and dark mode support
+
+## Folder Structure
+- `src/app/`: Contains the main application components and pages
+- `src/components/`: Contains the UI components
+- `src/hooks/`: Custom hooks for the application
+- `src/lib/`: Utility functions and constants
+- `src/types/`: TypeScript types and interfaces
 
 ## License
+
 MIT
