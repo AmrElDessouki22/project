@@ -1,16 +1,15 @@
-import NewNoteForm from '../components/features/NewNoteForm';
-import NoteList from '../components/features/NoteList';
-import { NotesProvider } from '../contexts/NotesContext';
+import React from 'react';
+import { NotesList } from '@/components/features/NotesList';
+import { NoteForm } from '@/components/features/NoteForm';
 
-const Page = () => {
+const HomePage: React.FC = () => {
   return (
-    <NotesProvider>
-      <div className="app-container">
-        <NewNoteForm />
-        <NoteList />
-      </div>
-    </NotesProvider>
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Notes</h1>
+      <NoteForm />
+      <NotesList />
+    </div>
   );
 };
 
-export default Page;
+export default HomePage;
