@@ -1,10 +1,8 @@
-// Next.js configuration file
-const nextConfig = {
+import { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  images: {
-    domains: ['example.com'],
-  },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
