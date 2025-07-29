@@ -1,11 +1,9 @@
-import React from 'react';
+'use client';
 
-const Header: React.FC = () => {
+export default function Header() {
   return (
     <header className="bg-blue-600 text-white p-4">
-      <h1 className="text-2xl">Note App</h1>
+      <h1 className="text-xl">Notes App</h1>
     </header>
   );
-};
-
-export default Header;
+}
