@@ -1,38 +1,39 @@
 "use client";
 
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import Button from '@/components/ui/Button';
 
 interface InputProps {
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
-  onAddNote?: () => void;
 }
 
-const Input: React.FC<InputProps> = ({ value, onChange, placeholder, onAddNote }) => {
-  const [note, setNote] = useState('');
+const Input: React.FC<InputProps> = ({ placeholder }) => {
+  const [value, setValue] = useState('');
+  const router = useRouter();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNote(e.target.value);
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
   };
 
-  const handleAddNote = () => {
-    if (note.trim()) {
-      onAddNote?.();
-      setNote('');
-    }
+  const onClick = () => {
+    router.push({
+      pathname: '/',
+      query: { note: value },
+    });
+    setValue('');
   };
 
   return (
     <div>
       <input
-        value={note}
-        onChange={handleInputChange}
+        value={value}
+        onChange={onChange}
         placeholder={placeholder}
         className="input"
+        style={{ color: 'black' }}
       />
-      <Button onClick={handleAddNote}>Add Note</Button>
+      <Button onClick={onClick}>Add Note</Button>
     </div>
   );
 };
