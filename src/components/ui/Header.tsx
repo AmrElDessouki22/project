@@ -1,17 +1,7 @@
-'use client';
-
 import React from 'react';
 
-type HeaderProps = {
-  title: string;
-};
-
-const Header: React.FC<HeaderProps> = ({ title }) => {
-  return (
-    <header className="bg-blue-600 text-white p-4 shadow-md">
-      <h1 className="text-xl font-bold">{title}</h1>
-    </header>
-  );
-};
-
-export default Header;
+export const Header: React.FC = () => (
+  <header className="bg-blue-500 text-white p-4">
+    <h1 className="text-lg font-bold">Notes App</h1>
+  </header>
+);
