@@ -1,45 +1,42 @@
-"use client";
+'use client';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { Note } from '@/types';
 
-import { createContext, useState } from 'react';
-import { Note } from '../types';
-import Input from '@/components/ui/Input';
-import Button from '@/components/ui/Button';
-
-interface NotesContextProps {
+interface NotesContextType {
   notes: Note[];
-  addNote: (text: string) => void;
+  addNote: (content: string) => void;
+  removeNote: (index: number) => void;
+  editNote: (index: number, content: string) => void;
 }
 
-export const NotesContext = createContext<NotesContextProps>({
-  notes: [],
-  addNote: () => {},
-});
+const NotesContext = createContext<NotesContextType | undefined>(undefined);
 
-export const NotesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const NotesProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [notes, setNotes] = useState<Note[]>([]);
-  const [inputValue, setInputValue] = useState('');
 
-  const addNote = (text: string) => {
-    const newNote: Note = { id: Date.now(), text };
-    setNotes((prevNotes) => [...prevNotes, newNote]);
+  const addNote = (content: string) => {
+    setNotes((prevNotes) => [...prevNotes, { content }]);
   };
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
+  const removeNote = (index: number) => {
+    setNotes((prevNotes) => prevNotes.filter((_, i) => i !== index));
   };
 
-  const handleAddNote = () => {
-    addNote(inputValue);
-    setInputValue('');
+  const editNote = (index: number, content: string) => {
+    setNotes((prevNotes) => prevNotes.map((note, i) => i === index ? { content } : note));
   };
 
   return (
-    <NotesContext.Provider value={{ notes, addNote }}>
-      <div style={{ color: 'black' }}>
-        <Input value={inputValue} onChange={handleInputChange} />
-        <Button onClick={handleAddNote}>Add Note</Button>
-      </div>
+    <NotesContext.Provider value={{ notes, addNote, removeNote, editNote }}>
       {children}
     </NotesContext.Provider>
   );
+};
+
+export const useNotes = (): NotesContextType => {
+  const context = useContext(NotesContext);
+  if (!context) {
+    throw new Error('useNotes must be used within a NotesProvider');
+  }
+  return context;
 };
