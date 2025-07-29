@@ -1,1 +1,1 @@
-export const APP_NAME = 'Next.js Notes App';
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
