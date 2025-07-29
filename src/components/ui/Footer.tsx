@@ -1,11 +1,7 @@
-import React from 'react';
-
-const Footer: React.FC = () => {
+export default function Footer() {
   return (
-    <footer className="bg-blue-600 text-white p-4 mt-auto">
-      <p className="text-center">© 2023 Note App</p>
+    <footer className="bg-gray-800 text-gray-200 p-4 text-center">
+      <p>&copy; 2023 Notes App</p>
     </footer>
   );
-};
-
-export default Footer;
+}
