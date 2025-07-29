@@ -1,13 +1,16 @@
-import { useNotes } from '@/contexts/NotesContext'
-import NoteItem from './NoteItem'
+'use client';
 
-export default function NoteList() {
-  const { notes } = useNotes()
+import React from 'react';
+import { NotesContext } from '@/contexts/NotesContext';
+import NoteItem from './NoteItem';
+
+const NoteList: React.FC = () => {
+  const { notes } = React.useContext(NotesContext);
 
   return (
-    <div>
+    <div className="p-4">
       {notes.length === 0 ? (
-        <p>No notes available. Create one!</p>
+        <p>No notes available. Create some!</p>
       ) : (
         <ul>
           {notes.map(note => (
@@ -16,5 +19,7 @@ export default function NoteList() {
         </ul>
       )}
     </div>
-  )
-}
+  );
+};
+
+export default NoteList;
