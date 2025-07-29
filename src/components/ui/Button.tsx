@@ -1,40 +1,17 @@
-"use client";
-
-import { useState } from 'react';
+'use client';
+import React from 'react';
 
 interface ButtonProps {
+  onClick: () => void;
   children: React.ReactNode;
+  isDelete?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ children }) => {
-  const [note, setNote] = useState('');
-  const [notes, setNotes] = useState<string[]>([]);
-
-  const handleClick = () => {
-    setNotes(prevNotes => [...prevNotes, note]);
-    setNote('');
-  };
-
-  return (
-    <div>
-      <input 
-        value={note} 
-        onChange={(e) => setNote(e.target.value)} 
-        className="input" 
-        style={{ color: 'black' }} 
-      />
-      <button onClick={handleClick} className="btn">
-        {children}
-      </button>
-      <ul>
-        {notes.map((note, index) => (
-          <li key={index} style={{ color: 'black' }}>
-            {note}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-export default Button;
+export const Button: React.FC<ButtonProps> = ({ onClick, children, isDelete = false }) => (
+  <button
+    onClick={onClick}
+    className={`font-bold py-2 px-4 rounded ${isDelete ? 'bg-red-600 hover:bg-red-700 text-white' : 'bg-blue-600 hover:bg-blue-700 text-white'}`}
+  >
+    {children}
+  </button>
+);
