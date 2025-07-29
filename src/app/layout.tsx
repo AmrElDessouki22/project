@@ -1,19 +1,21 @@
-import React from 'react';
-import '../globals.css';
-import { NotesProvider } from '@/contexts/NotesContext';
+import '@/app/globals.css';
+import { ReactNode } from 'react';
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 
-const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return (
-    <NotesProvider>
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow container mx-auto px-4">{children}</main>
-        <Footer />
-      </div>
-    </NotesProvider>
-  );
+export const metadata = {
+  title: 'AI Generated Notes App',
+  description: 'A simple and efficient note-taking application',
 };
 
-export default Layout;
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en">
+      <body className="bg-gray-100 text-gray-900">
+        <Header />
+        <main className="container mx-auto p-4">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}
