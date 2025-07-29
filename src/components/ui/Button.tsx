@@ -1,19 +1,18 @@
 'use client';
-import React from 'react';
 
-type ButtonProps = {
-  onClick: () => void;
-  children: React.ReactNode;
-};
+import { ButtonHTMLAttributes } from 'react';
 
-const Button: React.FC<ButtonProps> = ({ onClick, children }) => {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  label: string;
+}
+
+export default function Button({ label, ...props }: ButtonProps) {
   return (
-    <button 
-      onClick={onClick} 
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-      {children}
+    <button
+      {...props}
+      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    >
+      {label}
     </button>
   );
-};
-
-export default Button;
+}
