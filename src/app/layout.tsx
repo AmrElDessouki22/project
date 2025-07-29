@@ -1,13 +1,17 @@
 import React from 'react';
-import { NotesProvider } from '@/contexts/NotesContext';
 import '@/app/globals.css';
+import { NotesProvider } from '@/contexts/NotesContext';
+import { Header } from '@/components/ui/Header';
+import { Footer } from '@/components/ui/Footer';
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <html lang="en">
       <body>
         <NotesProvider>
-          {children}
+          <Header />
+          <main>{children}</main>
+          <Footer />
         </NotesProvider>
       </body>
     </html>
