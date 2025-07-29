@@ -1,22 +1,14 @@
 'use client';
-import React from 'react';
 
-type InputProps = {
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder?: string;
-};
+import { InputHTMLAttributes } from 'react';
 
-const Input: React.FC<InputProps> = ({ value, onChange, placeholder }) => {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
+
+export default function Input(props: InputProps) {
   return (
-    <input 
-      type="text"
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-      className="border rounded p-2 w-full"
+    <input
+      {...props}
+      className="border border-gray-300 p-2 rounded w-full"
     />
   );
-};
-
-export default Input;
+}
