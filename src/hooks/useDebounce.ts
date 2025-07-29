@@ -1,6 +1,8 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 
-export default function useDebounce(value, delay) {
+function useDebounce<T>(value: T, delay: number): T {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
@@ -15,3 +17,5 @@ export default function useDebounce(value, delay) {
 
   return debouncedValue;
 }
+
+export default useDebounce;
