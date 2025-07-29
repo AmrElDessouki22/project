@@ -1,43 +1,41 @@
-'use client'
+'use client';
+import React, { useState } from 'react';
+import { useNotes } from '@/contexts/NotesContext';
+import { Input } from '@/components/ui/Input';
+import { Button } from '@/components/ui/Button';
 
-import { useState } from 'react'
-import { useNotes } from '@/contexts/NotesContext'
-import Button from '@/components/ui/Button'
+interface NoteFormProps {
+  note?: string;
+  onEdit?: (note: string) => void;
+}
 
-export default function NoteForm() {
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
-  const { addNote } = useNotes()
+export const NoteForm: React.FC<NoteFormProps> = ({ note: initialNote = '', onEdit }) => {
+  const [note, setNote] = useState(initialNote);
+  const { addNote, deleteNote } = useNotes();
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    addNote({
-      title,
-      content,
-    })
-    setTitle('')
-    setContent('')
-  }
+    e.preventDefault();
+    if (note.trim()) {
+      if (onEdit) {
+        onEdit(note);
+      } else {
+        addNote(note);
+      }
+      setNote('');
+    }
+  };
+
+  const handleDelete = () => {
+    if (initialNote) {
+      deleteNote(initialNote);
+    }
+  };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-8">
-      <input 
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Note Title"
-        className="w-full mb-4 p-2 border rounded"
-        required
-      />
-      <textarea
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        placeholder="Note Content"
-        className="w-full mb-4 p-2 border rounded"
-        required
-        rows={4}
-      />
-      <Button type="submit" variant="primary">Add Note</Button>
+    <form onSubmit={handleSubmit} className="mb-4">
+      <Input value={note} onChange={(e) => setNote(e.target.value)} placeholder="Enter your note" />
+      <Button onClick={handleSubmit}>{onEdit ? 'Edit Note' : 'Add Note'}</Button>
+      {initialNote && <Button onClick={handleDelete}>Delete Note</Button>}
     </form>
-  )
-}
+  );
+};
