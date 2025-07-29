@@ -2,8 +2,8 @@
 
 import { createContext, useState } from 'react';
 import { Note } from '../types';
-import { Button } from '@/components/ui/Button';
-import { Input } from '@/components/ui/Input';
+import Input from '@/components/ui/Input';
+import Button from '@/components/ui/Button';
 
 interface NotesContextProps {
   notes: Note[];
@@ -22,7 +22,6 @@ export const NotesProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const addNote = (text: string) => {
     const newNote: Note = { id: Date.now(), text };
     setNotes((prevNotes) => [...prevNotes, newNote]);
-    setInputValue('');
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,9 +29,8 @@ export const NotesProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   };
 
   const handleAddNote = () => {
-    if (inputValue.trim() !== '') {
-      addNote(inputValue);
-    }
+    addNote(inputValue);
+    setInputValue('');
   };
 
   return (
