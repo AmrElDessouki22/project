@@ -1,39 +1,33 @@
 'use client';
-import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { Note } from '@/types';
+import React, { createContext, useContext, useState } from 'react';
 
-interface NotesContextType {
-  notes: Note[];
-  addNote: (content: string) => void;
-  removeNote: (index: number) => void;
-  editNote: (index: number, content: string) => void;
-}
+type NotesContextType = {
+  notes: string[];
+  addNote: (note: string) => void;
+  deleteNote: (index: number) => void;
+};
 
 const NotesContext = createContext<NotesContextType | undefined>(undefined);
 
-export const NotesProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [notes, setNotes] = useState<Note[]>([]);
+export const NotesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [notes, setNotes] = useState<string[]>([]);
 
-  const addNote = (content: string) => {
-    setNotes((prevNotes) => [...prevNotes, { content }]);
+  const addNote = (note: string) => {
+    setNotes([...notes, note]);
   };
 
-  const removeNote = (index: number) => {
-    setNotes((prevNotes) => prevNotes.filter((_, i) => i !== index));
-  };
-
-  const editNote = (index: number, content: string) => {
-    setNotes((prevNotes) => prevNotes.map((note, i) => i === index ? { content } : note));
+  const deleteNote = (index: number) => {
+    setNotes(notes.filter((_, i) => i !== index));
   };
 
   return (
-    <NotesContext.Provider value={{ notes, addNote, removeNote, editNote }}>
+    <NotesContext.Provider value={{ notes, addNote, deleteNote }}>
       {children}
     </NotesContext.Provider>
   );
 };
 
-export const useNotes = (): NotesContextType => {
+export const useNotes = () => {
   const context = useContext(NotesContext);
   if (!context) {
     throw new Error('useNotes must be used within a NotesProvider');
