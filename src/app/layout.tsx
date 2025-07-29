@@ -1,13 +1,17 @@
+import React from 'react';
+import { NotesProvider } from '@/contexts/NotesContext';
 import '@/app/globals.css';
-import Header from '@/components/ui/Header';
-import Footer from '@/components/ui/Footer';
 
-export default function Layout({ children }) {
+const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-grow container mx-auto px-4">{children}</main>
-      <Footer />
-    </div>
+    <html lang="en">
+      <body>
+        <NotesProvider>
+          {children}
+        </NotesProvider>
+      </body>
+    </html>
   );
-}
+};
+
+export default RootLayout;
